@@ -11,17 +11,18 @@ import TodoForm from 'TodoForm';
 import * as actions from 'actions';
 
 // createClass used for component that maintains state
-export var TodoApp = React.createClass({
-  onLogout(e) {
+export class TodoApp extends React.Component {
+  onLogout (e) {
     var { dispatch } = this.props;
     e.preventDefault();
     dispatch(actions.startLogout());
-  },
-  render() {
+  }
+
+  render () {
     return (
       <div className="row">
         <div className="page-actions">
-          <a href="#" onClick={ this.onLogout }>Logout</a>
+          <a href="#" onClick={ this.onLogout.bind(this) }>Logout</a>
         </div>
         <h1 className='page-title'>Todo Application</h1>
         <div className="columns small-12 large-6 small-centered large-centered">
@@ -34,6 +35,6 @@ export var TodoApp = React.createClass({
       </div>
     );
   }
-});
+};
 
 export default Redux.connect()(TodoApp);

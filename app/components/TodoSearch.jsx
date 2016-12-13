@@ -2,8 +2,8 @@ var React = require('react');
 var { connect } = require('react-redux');
 var actions = require('actions');
 
-export var TodoSearch = React.createClass({
-  render: function () {
+export class TodoSearch extends React.Component {
+  render () {
     var { dispatch, showCompleted, searchText } = this.props;
 
     return (
@@ -15,18 +15,18 @@ export var TodoSearch = React.createClass({
           <input type="checkbox" ref="showCompletedInput" checked={ showCompleted } onChange={ () => {
             dispatch(actions.toggleShowCompleted());
           } } />
-          Show completed todos 
+          Show completed todos
         </label>
       </div>
     );
   }
-});
+};
 
 // grab values from state
 export default connect(
   (state) => {
-    return { 
-      showCompleted: state.showCompleted, 
+    return {
+      showCompleted: state.showCompleted,
       searchText: state.searchText
     };
   })(TodoSearch);

@@ -1,17 +1,21 @@
 // Libraries
 import React from 'react';
 import * as Redux from 'react-redux';
-
 import * as actions from 'actions';
 
 // createClass is used for a component that maintains state i.e. authentication
-export var Login = React.createClass({
-  onLogin() {
+export class Login extends React.Component {
+  constructor (props) {
+    super(props);
+    this.onLogin = this.onLogin.bind(this);
+  }
+
+  onLogin () {
     var { dispatch } = this.props;
     dispatch(actions.startLogin());
-  },
+  }
 
-  render() {
+  render () {
     return (
       <div>
         <h1 className="page-title">Todo App</h1>
@@ -27,6 +31,6 @@ export var Login = React.createClass({
       </div>
     );
   }
-})
+};
 
 export default Redux.connect()(Login);
